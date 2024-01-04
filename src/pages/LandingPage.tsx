@@ -10,13 +10,16 @@ import Testimony from 'parts/Testimony'
 import { useLandingPageQuery } from 'store/services/pageFetch'
 
 export default function LandingPage() {
-    const {data,isSuccess} = useLandingPageQuery()
+    const {data,isSuccess, isLoading} = useLandingPageQuery()
     const refMostPicked = useRef(null)
     return (
       <>
         {/* {isLoading && <h2 className="d-flex justify-content-center">...Loading</h2>}
         {isFetching && <h2 className="d-flex justify-content-center">...Fetching</h2>}
-        {error && <h2 className="d-flex justfy-content-center">...Something went wrong</h2>} */}
+      {error && <h2 className="d-flex justfy-content-center">...Something went wrong</h2>} */}
+        {
+          isLoading && <h2 className="d-flex justify-content-center">...Loading</h2>
+        }
         {isSuccess&&(
           <Layout>
             {/* <Hero hero={data.hero} test='test'></Hero> */}

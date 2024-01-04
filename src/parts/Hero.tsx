@@ -17,6 +17,8 @@ import formatNumber from "utils/formatNumber";
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
+import Skeleton from 'react-loading-skeleton';
+
 // const Hero =forwardRef((hero:any,test:string) => {
 const Hero =forwardRef(({hero}: {hero: hero}, ref: any) => {
    const checkTheme = useSelector((state:RootState) => state.toggleTheme.isDark)
