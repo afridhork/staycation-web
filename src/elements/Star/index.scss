@@ -1,0 +1,16 @@
+@import "../../assets/scss/_colorVariables";
+
+.stars{
+   position: relative;
+   .star{
+      position: absolute;
+      display: inline;
+		mask: url(../../assets/images/icons/star.svg) no-repeat center left;
+      &:not(.placeholder){
+         background-color: $yellow;
+      }
+      &.placeholder{
+         background-color: $gray-300
+      }
+   }
+}

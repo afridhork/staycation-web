@@ -1,0 +1,12 @@
+{
+   "globals": {
+      "define": true
+   },
+   "rules": {
+      // Other ESLint rules...
+   },
+   "plugins": [
+      "unicorn"
+  ]
+}
+ 

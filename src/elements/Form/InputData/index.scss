@@ -1,0 +1,28 @@
+@import "../../../assets/scss/_colorVariables";
+
+.input-text{
+   margin-bottom: 20px;
+   position: relative;
+   .input-group{
+      .form-control{
+         box-shadow: none;
+         &.light{
+            background-color: #2c2c2c !important
+         }
+         &::placeholder{
+            color: $gray-400;
+         }
+         &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+         }
+      }
+   }
+   .error-helper {
+      position: absolute;
+      top: 45px;
+      background-color: $red;
+      color: $white;
+      padding: 0 2px;
+      font-size: 0.675rem;
+    }
+}

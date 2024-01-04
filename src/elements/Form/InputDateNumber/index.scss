@@ -1,0 +1,24 @@
+@import "../../../assets/scss/_colorVariables";
+
+.input-group{
+   .input-group-text{
+      &.decrease{
+         cursor: pointer;
+         background-color: #E74C3C
+      }
+      &.increase{
+         cursor: pointer;
+         background-color: #1ABC9C
+      }
+   }
+   input.form-control{
+      border: none;
+      background-color: #F5F6F8;
+      box-shadow: none;
+      &.light{
+         background-color: #2c2c2c;
+         color:$gray-500;
+         border: 1px solid $gray-500;
+      }
+   }
+}
