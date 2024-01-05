@@ -12,6 +12,9 @@ import Agent from "pages/Agents";
 import DetailPage from "pages/DetailPage";
 import Checkout from "pages/Checkout";
 
+import 'react-loading-skeleton/dist/skeleton.css'
+
+
 function App() {
   return (
     
