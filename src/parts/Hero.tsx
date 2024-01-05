@@ -108,7 +108,7 @@ const Hero =forwardRef(({hero, isLoading}: {hero?: hero, isLoading?: boolean}, r
             ): isLoading && (
                <div className="row">
                   <div className="col-lg-6 col-12">
-                     <Skeleton className="w-[200px]"/>
+                     <Skeleton className="w-[200px] h-[300px]"/>
                   </div>
                   <div className="col-lg-6 col-12">
                      <Skeleton className="w-[200px]"/>
