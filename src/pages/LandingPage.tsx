@@ -18,7 +18,14 @@ export default function LandingPage() {
         {isFetching && <h2 className="d-flex justify-content-center">...Fetching</h2>}
       {error && <h2 className="d-flex justfy-content-center">...Something went wrong</h2>} */}
         {
-          isLoading && <h2 className="d-flex justify-content-center">...Loading</h2>
+          isLoading && (
+            <Layout>
+              <Hero isLoading={isLoading}/>
+              <MostPicked isLoading={isLoading}/>
+              <Categories isLoading={isLoading}/>
+              <Testimony isLoading={isLoading}/>
+            </Layout>
+          )
         }
         {isSuccess&&(
           <Layout>

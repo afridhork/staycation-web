@@ -6,12 +6,12 @@ import { category } from 'models/landingPage/category'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store'
 
-export default function Categories({items}:{items: category[]}) {
+export default function Categories({items, isLoading}:{items?: category[], isLoading?:boolean}) {
    const checkTheme = useSelector((state:RootState) => state.toggleTheme.isDark)
 
   return (
       <section className="container" data-name="category">
-         {items.map((category,index)=>{
+         {items && ( items.map((category,index)=>{
             return(
                   <div key={index} >
                      <h4 className={`category-title${checkTheme ? '-light' : ''}`}>{category.name}</h4>
@@ -46,7 +46,7 @@ export default function Categories({items}:{items: category[]}) {
                   </div>
                 
             )
-         })}
+         }))}
       </section>
   )
 }
