@@ -107,20 +107,11 @@ const Hero =forwardRef(({hero, isLoading}: {hero?: hero, isLoading?: boolean}, r
                </div>
             ): isLoading && (
                <div className="row">
-                  <Skeleton className="w-[200px]"/>
                   <div className="col-lg-6 col-12">
-                     <div className="hero-image-placeholder position-relative">
-                        <img
-                           src={imageHero}
-                           alt='Room with couches'
-                           className='img-fluid position-absolute'
-                        />
-                        <img
-                           src={imageHero_}
-                           alt='Room with couches frame'
-                           className={`img-fluid position-absolute ${checkTheme ? 'd-none' : ''}`}
-                        />
-                     </div>
+                     <Skeleton className="w-[200px]"/>
+                  </div>
+                  <div className="col-lg-6 col-12">
+                     <Skeleton className="w-[200px]"/>
                   </div>
                </div>
             )
