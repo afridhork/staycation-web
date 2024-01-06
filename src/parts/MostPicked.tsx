@@ -6,12 +6,14 @@ import { mostPicked } from 'models/landingPage/mostPicked'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store'
 
+import Skeleton from 'react-loading-skeleton';
+
 const MostPicked = forwardRef(({items, isLoading}: {items?: mostPicked[], isLoading?:boolean}, ref: any) => {
    const checkTheme = useSelector((state:RootState) => state.toggleTheme.isDark)
       return (
          <section className="container" data-name='most-picked' ref={ref}>
             {
-               items && (
+               items && !isLoading ? (
                   <>
                      <p className={`mp-title${checkTheme ? '-light':''}`}>Most Picked</p>
                      <div className="row">
@@ -77,6 +79,21 @@ const MostPicked = forwardRef(({items, isLoading}: {items?: mostPicked[], isLoad
                      </div>
                   </>
                   
+               ) : isLoading &&(
+                  <>
+                     <p className={`mp-title${checkTheme ? '-light':''}`}>Most Picked</p>
+                     <div className="row">
+                        <div className="col-lg-4 col-12 mb-4" style={{height:'405px'}}>
+                              <Skeleton style={{height:'400px'}}/>
+                        </div>
+                        
+                        <div className="col-lg-8 col-12">
+                              <Skeleton style={{height:'200px'}}/>
+                              <Skeleton style={{height:'200px'}}/>
+                        </div>
+                        
+                     </div>
+                  </>
                )
             }
          </section>

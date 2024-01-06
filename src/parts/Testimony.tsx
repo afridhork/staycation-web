@@ -9,13 +9,15 @@ import Star from 'elements/Star'
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
 
+import Skeleton from 'react-loading-skeleton';
+
 export default function Testimony({items, isLoading}: {items?: testimonial, isLoading?:boolean}) {
    const checkTheme = useSelector((state:RootState) => state.toggleTheme.isDark)
 
   return (
     <section className="container" data-name="testimony">
       {
-         items && (
+         items && !isLoading ? (
             <div className="row">
                <div className="col-lg-4 col-12 mb-5">
                   <div className="testimony-image-placeholder">
@@ -50,6 +52,19 @@ export default function Testimony({items, isLoading}: {items?: testimonial, isLo
                         </Button>
                      </div>
                   </div>
+               </div>
+               
+            </div>
+         ) : isLoading && (
+            <div className="row">
+               <div className="col-lg-4 col-12 mb-5">
+                  <div className="testimony-image-placeholder">
+                     <Skeleton style={{height:'400px'}}/>
+                  </div>
+               </div>
+               
+               <div className="col-lg-8 col-12">
+                  <Skeleton style={{height:'400px'}}/>
                </div>
                
             </div>
