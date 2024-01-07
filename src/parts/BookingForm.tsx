@@ -12,7 +12,7 @@ import { InputDateCalendar } from 'models/detailPage/InputDateCalendar'
 import { detailPage } from 'models/detailPage'
 import { RootState } from 'store'
 
-export default function BookingForm({items}: {items: detailPage}) {
+export default function BookingForm({items}: {items?: detailPage}) {
   const dispatch = useDispatch()
   const checkTheme = useSelector((state:RootState) => state.toggleTheme.isDark)
 
@@ -41,7 +41,7 @@ export default function BookingForm({items}: {items: detailPage}) {
 
     dispatch(
       checkoutBooking({
-        _id: items._id,
+        _id: items?._id,
         duration: data.duration,
         date: {
           startDate: serializedStartDate,
@@ -78,47 +78,51 @@ export default function BookingForm({items}: {items: detailPage}) {
 
   return (
     <div data-name="bookingForm">
-      <div className={`card card-booking${checkTheme ? '-light' : ''} bordered`}>
-        <h4 className={`${checkTheme ? 'text-light':'text-secondary'}`}>Start Booking</h4>
-        <h1 className="text-success mb-3">${items.price} <span style={{color: 'gray'}} className='font-weight-light'>per night</span> </h1>
-        <label className={`${checkTheme ? 'text-light':'text-secondary'}`}>How long you will stay?</label>
-        <InputDateNumber
-          max={30}
-          min={1}
-          suffix=" night"
-          prefix=""
-          isSuffixPlural
-          onChange={updateData}
-          name='duration'
-          value={data.duration}
-        />
-        <label className={`${checkTheme ? 'text-light':'text-secondary'} mt-3`}>Pick a Date</label>
-        <InputDate
-          onChange={updateData}
-          name='date'
-          value={data.date}
-        />
-        <h6
-          className='text-booking'
-          style={{marginTop:'20px'}}>
-          You will pay
-          <span className={`text-booking-price${checkTheme ? '-light':''}`}>
-            {" "}${items.price * data.duration} USD
-          </span>{" "}
-          <span className={`text-booking-duration${checkTheme ? '-light':''}`}>
-            {data.duration} {items.unit}
-          </span>
-        </h6>
-        <Button
-          type='link'
-          className='btn mt-5'
-          isPrimary
-          onClick={startBooking}
-          href='/checkout'
-        >
-          Continue to Book
-        </Button>
-      </div>
+      {
+        items && (
+          <div className={`card card-booking${checkTheme ? '-light' : ''} bordered`}>
+            <h4 className={`${checkTheme ? 'text-light':'text-secondary'}`}>Start Booking</h4>
+            <h1 className="text-success mb-3">${items.price} <span style={{color: 'gray'}} className='font-weight-light'>per night</span> </h1>
+            <label className={`${checkTheme ? 'text-light':'text-secondary'}`}>How long you will stay?</label>
+            <InputDateNumber
+              max={30}
+              min={1}
+              suffix=" night"
+              prefix=""
+              isSuffixPlural
+              onChange={updateData}
+              name='duration'
+              value={data.duration}
+            />
+            <label className={`${checkTheme ? 'text-light':'text-secondary'} mt-3`}>Pick a Date</label>
+            <InputDate
+              onChange={updateData}
+              name='date'
+              value={data.date}
+            />
+            <h6
+              className='text-booking'
+              style={{marginTop:'20px'}}>
+              You will pay
+              <span className={`text-booking-price${checkTheme ? '-light':''}`}>
+                {" "}${items.price * data.duration} USD
+              </span>{" "}
+              <span className={`text-booking-duration${checkTheme ? '-light':''}`}>
+                {data.duration} {items.unit}
+              </span>
+            </h6>
+            <Button
+              type='link'
+              className='btn mt-5'
+              isPrimary
+              onClick={startBooking}
+              href='/checkout'
+            >
+              Continue to Book
+            </Button>
+          </div>
+        )
+      }
     </div>
   )
 }

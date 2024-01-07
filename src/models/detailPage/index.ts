@@ -5,7 +5,7 @@ import { bank } from "./bank"
 import {testimonial} from "../landingPage/testimonial"
 
 export type detailPage = {
-   country: string,
+   country?: string | undefined,
    isPopular: boolean,
    unit: string,
    sumBooling: number,
@@ -13,9 +13,9 @@ export type detailPage = {
    featureId: featureId[],
    activityId: activityId[],
    _id: string,
-   title: string,
+   title?: string | undefined,
    price: number,
-   city: string,
+   city?: string | undefined,
    description: string,
    categoryId: string,
    __v: number,

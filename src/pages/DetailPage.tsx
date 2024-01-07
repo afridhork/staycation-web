@@ -17,20 +17,32 @@ export default function DetailPage() {
 
   const params = useParams()
   
-  const {data,isSuccess} = useDetailPageQuery(params.id as string)
+  const {data,isSuccess, isLoading} = useDetailPageQuery(params.id as string)
   
   return (
     <>
-      {isSuccess&&(
-          <Layout>
-            <PageDetailsTitle items={data}></PageDetailsTitle>
-            <FeatureImage items={data.imageId}></FeatureImage>
-            <FeatureDetailBooking items={data}></FeatureDetailBooking>
-            <Activities items={data.activityId}></Activities>
-            <Testimony items={data.testimonial}></Testimony>
-          </Layout>
-        )
-      }
+    {
+      isLoading && (
+        <Layout>
+          <PageDetailsTitle isLoading={isLoading} />
+          <FeatureImage isLoading={isLoading} />
+          <FeatureDetailBooking isLoading={isLoading} />
+          <Activities isLoading={isLoading} />
+          <Testimony isLoading={isLoading}/>
+        </Layout>
+      )
+    }
+    {
+      isSuccess&&(
+        <Layout>
+          <PageDetailsTitle items={data}></PageDetailsTitle>
+          <FeatureImage items={data.imageId}></FeatureImage>
+          <FeatureDetailBooking items={data}></FeatureDetailBooking>
+          <Activities items={data.activityId}></Activities>
+          <Testimony items={data.testimonial}></Testimony>
+        </Layout>
+      )
+    }
     </>
   )
 }
